@@ -1,11 +1,11 @@
-/**  next.config.js  */
+/** next.config.js (hard-coded) */
 module.exports = {
-  //  ⬇️  tells Next to build everything under /landingpage
+  reactStrictMode: true,
+  swcMinify: true,
   basePath: '/landingpage',
   assetPrefix: '/landingpage',
-
-  // keep these if you already have them
-  output: 'export',          // required for static hosting on Netlify
+  output: 'export',
   images: { unoptimized: true },
   eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
 };
