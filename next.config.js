@@ -1,27 +1,11 @@
-/** next.config.js
- * Use an env var to control the embed base path.
- * Local dev: no EMBED_BASE_PATH -> serves at "/"
- * Netlify prod: set EMBED_BASE_PATH="/landingpage" -> builds under that subpath
- */
+/**  next.config.js  */
+module.exports = {
+  //  ⬇️  tells Next to build everything under /landingpage
+  basePath: '/landingpage',
+  assetPrefix: '/landingpage',
 
-const embedBase = process.env.EMBED_BASE_PATH?.trim() || '';
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-
-  // ---- Sub-directory embed settings ----
-  basePath: embedBase,                 // e.g. "/landingpage" in Netlify
-  assetPrefix: embedBase || undefined, // let Next default in dev when empty
-
-  // ---- Static export for Netlify ----
-  output: 'export',                    // generates /out
-  images: { unoptimized: true },       // required for export unless all static
-
-  // ---- Build tolerances (optional; remove if you want strict) ----
+  // keep these if you already have them
+  output: 'export',          // required for static hosting on Netlify
+  images: { unoptimized: true },
   eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
 };
-
-module.exports = nextConfig;
