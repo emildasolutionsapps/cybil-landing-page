@@ -9,7 +9,6 @@ module.exports = {
 
   // Static export for Netlify
   output: 'export',
-
   // Disable Next‑image optimisation (required for static export)
   images: { unoptimized: true },
 
