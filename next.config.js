@@ -1,11 +1,8 @@
-/** next.config.js (hard-coded) */
+// next.config.js
 module.exports = {
-  reactStrictMode: true,
-  swcMinify: true,
-  basePath: '/landingpage',
-  assetPrefix: '/landingpage',
-  output: 'export',
-  images: { unoptimized: true },
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
+  webpack: (config) => {
+    config.externals = config.externals || {};
+    config.externals['@media-loader'] = '@media-loader';
+    return config;
+  }
 };
