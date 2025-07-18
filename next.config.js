@@ -1,11 +1,18 @@
-/**  next.config.js  */
+/** @type {import('next').NextConfig} */
 module.exports = {
-  //  ⬇️  tells Next to build everything under /landingpage
+  // Serve everything under https://www.cybilsolutions.com/landingpage
   basePath: '/landingpage',
   assetPrefix: '/landingpage',
 
-  // keep these if you already have them
-  output: 'export',          // required for static hosting on Netlify
+  // Let both “…/landingpage” and “…/landingpage/” resolve
+  trailingSlash: true,
+
+  // Static export for Netlify
+  output: 'export',
+
+  // Disable Next‑image optimisation (required for static export)
   images: { unoptimized: true },
+
+  // Skip ESLint during the Netlify build
   eslint: { ignoreDuringBuilds: true },
 };
